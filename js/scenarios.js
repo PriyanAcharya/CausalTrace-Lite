@@ -50,6 +50,7 @@ export const scenarios = [
         expectedForInput: { ...expectedChoose, date: "tomorrow" },
         actualOutput: { ...expectedChoose, date: "tomorrow" },
         summary: "A suitable Italian restaurant was chosen for the date it received.",
+        causalExplanation: "Choose followed its received date correctly, but tomorrow came from Understand's earlier misinterpretation and still violates the user's request.",
         event: "Selected an Italian restaurant for tomorrow at 7 PM.",
       },
       {
@@ -60,6 +61,7 @@ export const scenarios = [
         expectedForInput: { ...expectedExecute, date: "tomorrow" },
         actualOutput: { ...expectedExecute, date: "tomorrow" },
         summary: "The booking attempt used the date passed forward from Understand.",
+        causalExplanation: "Execute carried forward the date from Choose, which originated in Understand's misunderstanding.",
         event: "Attempted to submit the booking for tomorrow at 7 PM.",
       },
     ],
@@ -75,7 +77,6 @@ export const scenarios = [
     naiveExplanation: "A last-error-only debugger blames the final submission to the Chinese restaurant. The first incorrect decision happened earlier, when Choose selected it.",
     causalDependencies: [
       { fromStage: "choose", fromField: "restaurantId", toStage: "execute", toField: "restaurantId" },
-      { fromStage: "choose", fromField: "cuisine", toStage: "execute", toField: "cuisine" },
     ],
     stages: [
       {
@@ -123,12 +124,12 @@ export const scenarios = [
         },
         actualOutput: {
           restaurantId: "r-chinese-02",
-          cuisine: "Chinese",
           date: "tonight",
           time: "7 PM",
           partySize: 2,
         },
         summary: "The booking was successfully submitted for the selected restaurant.",
+        causalExplanation: "Execute submitted the restaurant selected by Choose; the cuisine mismatch began with that earlier choice.",
         event: "Submitted a booking for the selected Chinese restaurant.",
       },
     ],

@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { DEFAULT_SCENARIO_ID, getScenario, scenarios } from "../js/scenarios.js";
 import { evaluateScenario, findLastError } from "../js/evaluator.js";
-import { deriveDashboardModel } from "../js/app.js";
+import { createInitialState, deriveDashboardModel, selectScenario, selectStage } from "../js/app.js";
 
 const expectedRoots = new Map([
   ["misunderstood-request", "understand"],
@@ -27,11 +27,13 @@ test("derives each root cause, correct stage, and downstream status from values"
   assert.deepEqual(misunderstood.stages.map(({ stageId, status }) => [stageId, status]), [
     ["understand", "ROOT CAUSE"], ["choose", "AFFECTED"], ["execute", "AFFECTED"],
   ]);
+  assert.deepEqual(misunderstood.stages.slice(1).map((stage) => stage.localMismatches), [[], []]);
 
   const wrongRestaurant = evaluateScenario(getScenario("wrong-restaurant"));
   assert.deepEqual(wrongRestaurant.stages.map(({ stageId, status }) => [stageId, status]), [
     ["understand", "CORRECT"], ["choose", "ROOT CAUSE"], ["execute", "AFFECTED"],
   ]);
+  assert.deepEqual(wrongRestaurant.stages[2].localMismatches, []);
 
   const bookingFailed = evaluateScenario(getScenario("booking-failed"));
   assert.deepEqual(bookingFailed.stages.map(({ stageId, status }) => [stageId, status]), [
@@ -69,12 +71,23 @@ test("naive last-error diagnosis independently blames the final erroneous action
 
 test("stage inspection changes selected details but not scenario-level diagnoses", () => {
   const scenario = getScenario("misunderstood-request");
-  const rootView = deriveDashboardModel(scenario, "understand");
-  const laterView = deriveDashboardModel(scenario, "execute");
+  const initialState = createInitialState();
+  const inspectedState = selectStage(initialState, "execute");
+  const rootView = deriveDashboardModel(scenario, initialState.selectedStageId);
+  const laterView = deriveDashboardModel(scenario, inspectedState.selectedStageId);
+  assert.equal(initialState.selectedStageId, "understand");
   assert.equal(rootView.selectedStage.id, "understand");
   assert.equal(laterView.selectedStage.id, "execute");
   assert.deepEqual(laterView.evaluation, rootView.evaluation);
   assert.deepEqual(laterView.naiveDiagnosis, rootView.naiveDiagnosis);
+});
+
+test("scenario selection chooses its derived earliest incorrect stage", () => {
+  for (const scenario of scenarios) {
+    const state = selectScenario(createInitialState(), scenario);
+    assert.equal(state.selectedScenarioId, scenario.id);
+    assert.equal(state.selectedStageId, expectedRoots.get(scenario.id));
+  }
 });
 
 test("evaluation ignores human-readable explanations", () => {

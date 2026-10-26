@@ -9,7 +9,7 @@ Build mode: fast
 
 ## Slices
 
-- [ ] **1. You can see the earliest failure and the naive last-error diagnosis**
+- [x] **1. You can see the earliest failure and the naive last-error diagnosis**
   Becomes usable: A locally served dashboard opens on Scenario A and shows a three-stage trace, the derived Understand root cause, its affected downstream stages, and the separate naive final-error diagnosis. The scenario data and evaluator are independently testable across all three scenarios.
   Why now: This proves the unique kernel early and puts bootstrapping, deterministic data, evaluator logic, naive diagnosis, and its tests on a runnable path before visual polish.
   PRD ref: `prd.md > The Core Journey`, `Features and Behavior > Deterministic Scenarios`, `Features and Behavior > Stage Evaluation and Timeline`, `Features and Behavior > Diagnosis Comparison`, `Acceptance Criteria`

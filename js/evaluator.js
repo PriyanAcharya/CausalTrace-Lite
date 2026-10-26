@@ -52,7 +52,7 @@ export function evaluateScenario(scenario) {
       })
     ));
 
-    if (affectedFields.length > 0) {
+    if (affectedFields.length > 0 && result.localMismatches.length === 0) {
       result.status = "AFFECTED";
       result.affectedFields = affectedFields.map(({ field }) => field);
       for (const field of result.affectedFields) propagatedFields.add(`${stage.id}.${field}`);

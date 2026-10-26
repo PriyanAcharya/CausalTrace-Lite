@@ -19,10 +19,10 @@
       <span class="simulation-badge"><span class="status-dot" aria-hidden="true"></span> SIMULATED TRACE</span>
     </header>
 
-    <main class="dashboard" id="dashboard" aria-live="polite">
+    <main class="dashboard" id="dashboard">
       <section class="scenario-heading panel" aria-labelledby="scenario-title">
         <div>
-          <p class="eyebrow">RESTAURANT BOOKING · SCENARIO A</p>
+          <p class="eyebrow" id="scenario-label">RESTAURANT BOOKING · SCENARIO A</p>
           <h1 id="scenario-title">Loading scenario…</h1>
           <p class="muted" id="scenario-description"></p>
         </div>
@@ -30,6 +30,17 @@
           <span class="eyebrow">SIMULATED OUTCOME</span>
           <p id="scenario-outcome"></p>
         </div>
+      </section>
+
+      <section class="scenario-picker" aria-labelledby="scenario-picker-heading">
+        <div class="section-heading picker-heading">
+          <div>
+            <p class="eyebrow">CHOOSE A TRACE</p>
+            <h2 id="scenario-picker-heading">Failure scenarios</h2>
+          </div>
+          <span class="muted-inline">Three deterministic booking traces</span>
+        </div>
+        <div class="scenario-options" id="scenario-options" role="group" aria-label="Select a failure scenario"></div>
       </section>
 
       <section class="trace-section" aria-labelledby="trace-heading">
@@ -79,5 +90,6 @@
 
       <p class="footer-note">A deterministic trace, compared with the behavior the user asked for.</p>
     </main>
+    <p class="sr-only" id="announcement" aria-live="polite" aria-atomic="true"></p>
   </body>
 </html>
