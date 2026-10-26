@@ -30,7 +30,7 @@ Source: `scope.md > The Core Loop`, `Inspiration & Identity`.
 
 ## Look and Feel
 
-Use a polished dark developer-tool interface, with readable typography, restrained colors, subtle borders, and a clear hierarchy. Make the core insight legible at a glance. Use small transitions only to clarify scenario changes; avoid excessive gradients, decoration, and clutter. Pair color with labels and icons for accessibility. Source: `scope.md > Inspiration & Identity`.
+Use a handmade early-2000s personal-website aesthetic: nostalgic, feminine, and visually distinctive rather than a generic dashboard recolored pink. Use pale blush, bubblegum and raspberry pink, soft lavender, icy blue, and white surfaces with readable dark text. Keep correctness meaning accessible: mint for `CORRECT`, raspberry red for `ROOT CAUSE`, and warm amber for `AFFECTED`, paired with labels and icons. Frame panels as small retro desktop windows with pink title bars, beveled borders, dotted dividers, scrapbook-like scenario cards, and restrained CSS-only pixel hearts and stars. Use system fonts, no external assets, and small transitions only where they clarify scenario changes. Avoid illegible pixel fonts, oversized emoji, clutter, and distracting motion. Source: `scope.md > Inspiration & Identity` and the learner's visual direction.
 
 ## Features and Behavior
 

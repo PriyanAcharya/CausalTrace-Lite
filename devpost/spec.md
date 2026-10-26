@@ -56,7 +56,7 @@ scenarios.js ──> evaluator.js ──┐
 
 ## Look and Feel
 
-Implement the approved dark developer-tool direction in `styles.css`: clear hierarchy, readable system typography, restrained colors, subtle borders, and a large horizontal UNDERSTAND → CHOOSE → EXECUTE timeline. Pair green `CORRECT`, red `ROOT CAUSE`, and muted amber `AFFECTED` styling with text labels and icons. Use responsive layout, visible keyboard focus, and small transition cues; respect `prefers-reduced-motion`. Avoid remote fonts, excessive gradients, decoration, and clutter. Implements `prd.md > Screens and Layout`, `Look and Feel`, `Features and Behavior > Stage Evaluation and Timeline`.
+Implement the early-2000s personal-website direction in `styles.css`: pale blush canvas, bubblegum/raspberry accents, lavender and icy-blue surfaces, readable dark text, retro window title bars, beveled borders, scrapbook scenario cards, dotted separators, and restrained CSS pixel motifs. Keep the horizontal timeline as the visual anchor. Preserve semantic statuses with mint `CORRECT`, raspberry-red `ROOT CAUSE`, and warm-amber `AFFECTED`, always using text labels/icons as well as color. Use system fonts, no remote assets, responsive layout, visible keyboard focus, and small transitions; respect `prefers-reduced-motion`. Keep decoration subordinate to reading the trace. Implements `prd.md > Screens and Layout`, `Look and Feel`, `Features and Behavior > Stage Evaluation and Timeline`.
 
 ## Components
 

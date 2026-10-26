@@ -51,3 +51,5 @@ Reflection: [offered/answered/declined/already covered — personal answer belon
 Activity mode: [live app and editor, explicit static fallback, focused alternative, prior practice, or recap]
 
 ## Revisions
+
+- Replaced the initial dark developer-tool visual treatment with the requested early-2000s personal-website aesthetic; preserved timeline semantics, status colors, and app interactions.
