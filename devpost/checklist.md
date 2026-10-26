@@ -19,7 +19,7 @@ Build mode: fast
   Learner check: Open `http://localhost:8000` and describe which stage is the root cause, which later stages are affected, and which final action the naive diagnosis blames.
   Commit: `Build deterministic root-cause diagnosis slice`
 
-- [ ] **2. You can inspect stages and switch between all three scenarios**
+- [x] **2. You can inspect stages and switch between all three scenarios**
   Becomes usable: The responsive dark dashboard supports scenario selection, stage inspection, synchronized details and diagnosis panels, accessible status labels, and clear causal explanations. README instructions cover running, testing, and recording the demo.
   Why now: With the diagnosis kernel verified, this completes the judge-facing interaction and visual hierarchy without risking the core evaluator.
   PRD ref: `prd.md > Screens and Layout`, `Look and Feel`, `Features and Behavior > Scenario Selection and Default View`, `Features and Behavior > Stage Evaluation and Timeline`, `Features and Behavior > Diagnosis Comparison`, `States and Boundaries`, `Acceptance Criteria`
