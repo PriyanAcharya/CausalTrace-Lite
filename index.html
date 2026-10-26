@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b0e13">
+    <meta name="description" content="Trace a simulated agent failure to its earliest incorrect step.">
+    <title>CausalTrace Lite — Find the first failure</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="js/app.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="CausalTrace Lite home">
+        <span class="brand-mark" aria-hidden="true">CT</span>
+        <span>CausalTrace <span class="brand-lite">Lite</span></span>
+      </a>
+      <p class="tagline">Find the first failure, not just the last error.</p>
+      <span class="simulation-badge"><span class="status-dot" aria-hidden="true"></span> SIMULATED TRACE</span>
+    </header>
+
+    <main class="dashboard" id="dashboard" aria-live="polite">
+      <section class="scenario-heading panel" aria-labelledby="scenario-title">
+        <div>
+          <p class="eyebrow">RESTAURANT BOOKING · SCENARIO A</p>
+          <h1 id="scenario-title">Loading scenario…</h1>
+          <p class="muted" id="scenario-description"></p>
+        </div>
+        <div class="outcome-block">
+          <span class="eyebrow">SIMULATED OUTCOME</span>
+          <p id="scenario-outcome"></p>
+        </div>
+      </section>
+
+      <section class="trace-section" aria-labelledby="trace-heading">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">EXECUTION TRACE</p>
+            <h2 id="trace-heading">Three stages. One origin.</h2>
+          </div>
+          <span class="trace-request" id="user-request"></span>
+        </div>
+        <div class="stage-track" id="stage-track" aria-label="Agent execution timeline"></div>
+      </section>
+
+      <section class="diagnosis-grid" aria-label="Diagnosis comparison">
+        <article class="diagnosis-card causal-card" aria-labelledby="causal-heading">
+          <div class="card-heading">
+            <span class="card-icon root-icon" aria-hidden="true">!</span>
+            <div>
+              <p class="eyebrow">CAUSALTRACE DIAGNOSIS</p>
+              <h2 id="causal-heading">Earliest incorrect step</h2>
+            </div>
+          </div>
+          <div id="causal-diagnosis"></div>
+        </article>
+        <article class="diagnosis-card naive-card" aria-labelledby="naive-heading">
+          <div class="card-heading">
+            <span class="card-icon naive-icon" aria-hidden="true">↳</span>
+            <div>
+              <p class="eyebrow">NAIVE DEBUGGER</p>
+              <h2 id="naive-heading">Last error blamed</h2>
+            </div>
+          </div>
+          <div id="naive-diagnosis"></div>
+        </article>
+      </section>
+
+      <section class="details-panel panel" aria-labelledby="details-heading">
+        <div class="details-heading">
+          <div>
+            <p class="eyebrow">STAGE INSPECTION</p>
+            <h2 id="details-heading">Understand</h2>
+          </div>
+          <span class="status-pill status-root" id="selected-status">ROOT CAUSE</span>
+        </div>
+        <div id="stage-details"></div>
+      </section>
+
+      <p class="footer-note">A deterministic trace, compared with the behavior the user asked for.</p>
+    </main>
+  </body>
+</html>
